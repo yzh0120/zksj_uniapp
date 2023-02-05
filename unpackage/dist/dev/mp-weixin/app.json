@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/all/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/subPacks/sub1",
+      "pages": [
+        "list",
+        "components/uni-ui-select",
+        "components/uni-ui-section",
+        "components/dropdown"
+      ]
+    },
+    {
+      "root": "pages/subPacks/sub2",
+      "pages": [
+        "list"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {
+    "my-dropdown": "/components/dropdown/index"
+  }
+}

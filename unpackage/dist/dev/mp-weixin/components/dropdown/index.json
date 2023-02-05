@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tit": "/components/dropdown/tit",
+    "item": "/components/dropdown/item"
+  },
+  "component": true
+}

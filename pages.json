@@ -1,0 +1,80 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/all/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		}
+	],
+  //分包加载配置，此配置为小程序的分包加载机制。
+	"subPackages":[
+		{
+			"root":"pages/subPacks/sub1", //子包的根目录
+			"pages":[
+				{
+					"path": "list",
+					"style": {
+						"navigationBarTitleText": "子包1"
+					}
+				},
+				{
+					"path": "components/uni-ui-select",
+					"style": {
+						"navigationBarTitleText": "uni-ui-select"
+					}
+				},
+				{
+					"path": "components/uni-ui-section",
+					"style": {
+						"navigationBarTitleText": "uni-ui-section"
+					}
+				},
+				{
+					"path": "components/dropdown",
+					"style": {
+						"navigationBarTitleText": "dropdown"
+					}
+				}
+			]
+		},
+		{
+			"root":"pages/subPacks/sub2", //子包的根目录
+			"pages":[
+				{
+					"path": "list",
+					"style": {
+						"navigationBarTitleText": "子包2"
+					}
+				}
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+	// "tabBar": {
+	// 	"color": "#7A7E83",
+	// 	"selectedColor": "#4985F6",
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [
+	// 		{
+	// 			"pagePath": "pages/subPacks/sub1/list",
+	// 			"iconPath": "static/logo.png",
+	// 			"selectedIconPath": "static/logo.png",
+	// 			"text": "列表1"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/subPacks/sub2/list",
+	// 			"iconPath": "static/logo.png",
+	// 			"selectedIconPath": "static/logo.png",
+	// 			"text": "列表2"
+	// 		}
+	// 	]
+	// }
+}
