@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "uni-ui-select",
-  "usingComponents": {
-    "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
-    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
-  }
-}
