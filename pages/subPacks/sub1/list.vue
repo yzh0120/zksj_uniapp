@@ -1,3 +1,9 @@
+<!--
+ * @Author: yz
+ * @Date: 2023-02-06 14:52:03
+ * @Description: 
+ * 
+-->
 <template>
   <div>
     <!-- <u-list @scrolltolower="scrolltolower">
@@ -21,7 +27,8 @@ export default {
       list: [
         { name: "下拉框", url: "uni-ui-select" },
         { name: "标题栏", url: "uni-ui-section" },
-        { name: "dropdown", url: "dropdown" }
+        { name: "dropdown", url: "dropdown" },
+        { name: "panel", url: "panel" }
       ]
     }
   },

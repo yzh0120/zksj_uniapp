@@ -25,13 +25,19 @@ import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
 
 
-//全局组件
+/**************************************************************************
+全局组件
+*/
 import myDropdown from '@/components/dropdown/index'
 Vue.component('myDropdown', myDropdown)
 
+import panel from '@/components/panel'
+Vue.component('panel', panel)
 
 
-//原型链
+/**************************************************************************
+原型链
+*/
 import XEUtils from 'xe-utils'
 Vue.prototype.$utils = XEUtils
 import * as fn from "@/utils/fn.js"

@@ -35,6 +35,12 @@
 					"style": {
 						"navigationBarTitleText": "dropdown"
 					}
+				},
+				{
+					"path": "components/panel",
+					"style": {
+						"navigationBarTitleText": "panel"
+					}
 				}
 			]
 		},
