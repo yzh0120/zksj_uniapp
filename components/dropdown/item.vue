@@ -36,30 +36,31 @@
 
 
 
+		<view  v-else>
+			<scroll-view class="dropdown-item-box"  scroll-y="true">
+				<view class="con-box" v-if="checkList.length">
+					<text @click="clear(checkList)" v-show="showClear">清空</text>
 
-    <scroll-view class="dropdown-item-box"  scroll-y="true" v-else>
-      <view class="con-box" v-show="checkList.length">
-        <text @click="clear(checkList)" v-show="showClear">清空</text>
+					<view class="inline_items" v-show="item.type === `inline`" >
+						<text :class="['txt', oneItem.isCheck ? 'active' : '']" v-for="(oneItem, index) in checkList" :key="index"
+							@click="selectItem(oneItem, index)">{{
+							oneItem[label] 
+							}}</text>
+					</view>
 
-        <view class="inline_items" v-show="item.type === `inline`" >
-          <text :class="['txt', item.isCheck ? 'active' : '']" v-for="(item, index) in checkList" :key="index"
-            @click="selectItem(item, index)">{{
-            item[label] 
-            }}</text>
-        </view>
+					<view class="block_items" v-show="item.type === `block`" >
+						<div :class="['txt', oneItem.isCheck ? 'active' : '']" v-for="(oneItem, index) in checkList" :key="index"
+							@click="selectItem(oneItem, index)">{{
+							oneItem[label] 
+							}}</div>
+					</view>
 
-        <view class="block_items" v-show="item.type === `block`" >
-          <div :class="['txt', item.isCheck ? 'active' : '']" v-for="(item, index) in checkList" :key="index"
-            @click="selectItem(item, index)">{{
-            item[label] 
-            }}</div>
-        </view>
+				</view>
 
-      </view>
+				<div class="overlay" @click="closeAll"></div>
 
-      <div class="overlay" @click="closeAll"></div>
-
-    </scroll-view>
+			</scroll-view>
+	</view>
 </div>
 </template>
 
@@ -140,7 +141,6 @@ export default {
 			deep: true,
 			handler: function (val, oldVal) {
         this.$set(this, "checkList", this.$fn.deepClone(this.list));
-        console.log(this.checkList,"000")
 			},
 		}
 	},
