@@ -47,7 +47,8 @@ export default {
         'userInfo.like': [
           {
             type: 'any',
-            validator: self.$validator.myRequired,
+            required: true,
+            message: '请填写姓名',
             trigger: ['blur', 'change']
           }
         ]
