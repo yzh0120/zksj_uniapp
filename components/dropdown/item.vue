@@ -16,12 +16,12 @@
           <!-- {{ oneItem }}--- -->
           <view class="selectTit" v-if="oneItem.children && oneItem.children.length">
             <text class="tit">{{  oneItem[item.label]   }}</text>
-            <text class="clear" @click="clearOne(oneItem)">清空</text>
+            <text class="clear" @click="clearMoreOne(oneItem)">清空</text>
           </view>
           <view class="items">
-            <text :class="['txt', sonItem.isCheck ? 'active' : '']" v-for="(sonItem, index) in oneItem.children"
-              @click="selectItem(sonItem, index, cIndex)">{{
-              sonItem[item.label] 
+            <text :class="['txt', twoItem.isCheck ? 'active' : '']" v-for="(twoItem, index) in oneItem.children"
+              @click="selectMore(oneItem,oneItem.children,twoItem)">{{
+              twoItem[oneItem.label] 
               }}</text>
           </view>
         </view>
@@ -39,7 +39,7 @@
 		<view  v-else>
 			<scroll-view class="dropdown-item-box"  scroll-y="true">
 				<view class="con-box" v-if="checkList.length">
-					<text @click="clear(checkList)" v-show="showClear">清空</text>
+					<text @click="clearOne(checkList)" v-show="!item.showClear">清空</text>
 
 					<view class="inline_items" v-show="item.type === `inline`" >
 						<text :class="['txt', oneItem.isCheck ? 'active' : '']" v-for="(oneItem, index) in checkList" :key="index"
@@ -111,17 +111,17 @@ export default {
 			default: true
 		},
 		// 是否多选
-		multiple: {
-			type: Boolean,
+		// multiple: {
+		// 	type: Boolean,
 			
-			default: false
-		},
+		// 	default: false
+		// },
 		// 是否显示清空按钮
-		showClear: {
-			type: Boolean,
+		// showClear: {
+		// 	type: Boolean,
 			
-			default: true
-		},
+		// 	default: true
+		// },
 	},
 	data() {
 		return {
@@ -144,53 +144,79 @@ export default {
 			},
 		}
 	},
-  methods: {
+	methods: {
+		////////////////////////////////////两层数据
+		selectMore(oneItem,oneList,twoItem) { 
+			let isCheck = twoItem.isCheck;
+			if (oneItem.multiple) {
+				twoItem.isCheck = !isCheck;
+			} else {
+				// 单选时先全部清空选择
+				oneList.forEach(twoItem => {
+					twoItem.isCheck = false;
+				})
+				twoItem.isCheck = !isCheck;
+			}
+			this.$emit('select', {field:oneItem.field,value:this.getValueMore(oneItem,oneList)});
+		},
+		getValueMore(oneItem,oneList) { 
+			let values = [];
+			let list = oneList.filter((item) => {
+				return item.isCheck;
+			})
+			list.forEach(item => {
+				values.push(item[oneItem.value]);
+			});
+			return oneItem.multiple ? values : values[0] || "";
+		},
     //more 的确认方法
     confirm() { },
-    //清空单个项目数据
-    clearOne(oneItem) { 
+    //清空默认的单个项目数据
+    clearMoreOne(oneItem) { 
       oneItem.children.forEach((e) => { 
         e.isCheck = false
-      })
+			})
+			this.$emit('select', {field:oneItem.field,value:""});
     },
-    ////////////////////////////////////
-    //关闭所有
+    ////////////////////////////////////////////////////////////////////////////////////////////一层数据
+    //关闭所有弹窗
 		closeAll() {
 			this.$emit('closeAll');
     },
-    //选择成员事件
-		selectItem(item) {
-			let isCheck = item.isCheck;
-			if (this.multiple) {
-				item.isCheck = !isCheck;
+    //单层数据选择成员事件
+		selectItem(oneItem) {
+			let isCheck = oneItem.isCheck;
+			if (this.item.multiple) {
+				oneItem.isCheck = !isCheck;
 			} else {
 				// 单选时先全部清空选择
-				this.checkList.forEach(item => {
-					item.isCheck = false;
+				this.checkList.forEach(oneItem => {
+					oneItem.isCheck = false;
 				})
-				item.isCheck = !isCheck;
+				oneItem.isCheck = !isCheck;
 			}
-			// this.$emit('onSelectChange', item);
+			this.$emit('select', {field:this.item.field,value:this.getValue()});
+		
     },
-    //清空数据
-    clear(list) {
-      list.forEach(item => {
+    //单层数据清空数据
+    clearOne() {
+      this.checkList.forEach(item => {
         item.isCheck = false;
-        if (item.children) { 
-          this.clear(item.children)
-        }
 			})
-			// this.checkList.forEach(item => {
-      //   item.isCheck = false;
-      //   if (item.children) { 
-
-      //   }
-			// })
-			// this.$emit('onSelectChange', {});
+			this.$emit('select', {field:this.item.field,value:this.getValue()});
 		},
 
-
-    
+		//单层数据获取值
+    getValue() {
+			let values = [];
+			let list = this.checkList.filter((item) => {
+				return item.isCheck;
+			})
+			list.forEach(item => {
+				values.push(item[this.value]);
+			});
+			return this.item.multiple ? values : values[0] || "";
+		},
 		getLabel() {
 			let labels = [];
 			let list = this.checkList.filter((item) => {
@@ -199,18 +225,9 @@ export default {
 			list.forEach(item => {
 				labels.push(item[this.label]);
 			});
-			return this.multiple ? labels : labels[0] || "";
+			return this.item.multiple ? labels : labels[0] || "";
 		},
-		getValue() {
-			let values = [];
-			let list = this.checkList.filter((item) => {
-				return item.isCheck;
-			})
-			list.forEach(item => {
-				values.push(item[this.value]);
-			});
-			return this.multiple ? values : values[0] || "";
-		},
+		
 		getAllList() {
 			return this.$fn.deepClone(this.checkList);
 		},
