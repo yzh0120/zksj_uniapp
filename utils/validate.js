@@ -493,8 +493,9 @@ export function zhNUmEng(rule, value, callback) {
 
 
 export function myRequired(rule, value, callback) { 
+  console.log(value,"123123132")
   if (value === null || value === undefined) {
-    callback("不能为空");
+    callback(new error("不能为空"));
   } else { 
     callback();
   }

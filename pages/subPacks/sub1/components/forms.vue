@@ -6,8 +6,8 @@
         <u--input v-model="form.userInfo.name" border="none"></u--input>
       </u-form-item>
 
-      <u-form-item label="爱好" prop="userInfo.range" borderBottom >
-        <uni-data-select v-model="form.userInfo.range" :localdata="range"></uni-data-select>
+      <u-form-item label="爱好" prop="userInfo.like" borderBottom >
+        <uni-data-select v-model="form.userInfo.like" :localdata="range"></uni-data-select>
       </u-form-item>
     </u--form>
 
@@ -22,8 +22,8 @@ export default {
     return {
       form: {
         userInfo: {
-          name: 'uView UI',
-          range:0,
+          name: 123,
+          like:2,
         },
       },
       range: [
@@ -34,17 +34,19 @@ export default {
       rules: {
         'userInfo.name': [
           {
+            type: 'any',
             required: true,
             message: '请填写姓名',
             trigger: ['blur', 'change']
           },
           {
-            validator: self.$validator.positivenumberpoint,
+            validator: self.$validator.zhNUmEng,
             trigger: ['blur']
           }
         ],
-        'userInfo.range': [
-        {
+        'userInfo.like': [
+          {
+            type: 'any',
             validator: self.$validator.myRequired,
             trigger: ['blur', 'change']
           }
@@ -59,8 +61,12 @@ export default {
   },
   methods: {
     submit() {
+
+      console.log(uni.$u,"uni.$u")
+
 			this.$refs.uForm.validate().then(res => {
-				uni.$u.toast('校验通过')
+        uni.$u.toast('校验通过')
+      
 			}).catch(errors => {
 				uni.$u.toast('校验失败')
 			})
