@@ -490,3 +490,12 @@ export function zhNUmEng(rule, value, callback) {
     callback();
   }
 }
+
+
+export function myRequired(rule, value, callback) { 
+  if (value === null || value === undefined) {
+    callback("不能为空");
+  } else { 
+    callback();
+  }
+}

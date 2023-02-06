@@ -41,6 +41,12 @@
 					"style": {
 						"navigationBarTitleText": "panel"
 					}
+				},
+				{
+					"path": "components/forms",
+					"style": {
+						"navigationBarTitleText": "forms"
+					}
 				}
 			]
 		},

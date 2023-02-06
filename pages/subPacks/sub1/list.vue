@@ -28,7 +28,8 @@ export default {
         { name: "下拉框", url: "uni-ui-select" },
         { name: "标题栏", url: "uni-ui-section" },
         { name: "dropdown", url: "dropdown" },
-        { name: "panel", url: "panel" }
+        { name: "panel", url: "panel" },
+        { name: "forms", url: "forms" }
       ]
     }
   },
