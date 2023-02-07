@@ -31,7 +31,8 @@
           {
             type: "block",
             field: "roleId",
-            // isShow: false,
+            text: "label",
+                value:"value",
             list: [
               {
                 isCheck: false,
@@ -104,7 +105,8 @@
             multiple:true,
             type: "inline",
             field: "planId",
-            // isShow: false,
+            text: "label",
+                value:"value",
             list: [
               {
                 isCheck: false,
@@ -140,8 +142,8 @@
               {
                 field: "more1",
                 isCheck: false,
-                label: "label",
-            value:"value",
+                text: "label",
+                value:"value",
                 children: [
                   {
                     isCheck: false,
@@ -163,8 +165,8 @@
               {
                 field: "more2",
                 isCheck: false,
-                label: "label",
-                value: "value",
+                text: "label",
+                value:"value",
                 multiple:true,
                 children: [
                   {

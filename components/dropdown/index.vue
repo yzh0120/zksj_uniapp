@@ -1,9 +1,15 @@
+<!--
+ * @Author: yz
+ * @Date: 2023-02-07 11:06:34
+ * @Description: 
+ * 
+-->
 <template>
   <div>
     
     <tit :titData="alldata.titData" @titToggle="titToggle"></tit>
     <item v-for="(item, index) in alldata.itemObj" :key="index" :list="item.list" :index="index"
-      :isShow="alldata.titData[index].arrowUp" :item="item" @closeAll="closeAll" @select="select"></item>
+      :isShow="alldata.titData[index].arrowUp" :item="item" @closeAll="closeAll" @select="select" @check="check"></item>
   </div>
 </template>
 
@@ -30,6 +36,11 @@ export default {
     }
   },
   methods: {
+    check(e) {
+      // this.$emit("check",e)
+      this.alldata.itemObj[e.index].list = e.list
+      this.$emit("upalldata",this.alldata)
+    },
     //select
     select(e) { 
       this.$set(this.valueObj, e.field, e.value)
@@ -40,7 +51,6 @@ export default {
       this.alldata.titData.forEach((e) => {
         e.arrowUp = false
       })
-
       this.$emit("upalldata",this.alldata)
     },
     //标题切换

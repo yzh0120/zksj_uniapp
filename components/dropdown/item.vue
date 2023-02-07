@@ -15,13 +15,13 @@
         <view class="con" v-for="(oneItem, cIndex) in checkList">
           <!-- {{ oneItem }}--- -->
           <view class="selectTit" v-if="oneItem.children && oneItem.children.length">
-            <text class="tit">{{  oneItem[item.label]   }}</text>
+            <text class="tit">{{  oneItem[item.text]   }}</text>
             <text class="clear" @click="clearMoreOne(oneItem)">清空</text>
           </view>
           <view class="items">
             <text :class="['txt', twoItem.isCheck ? 'active' : '']" v-for="(twoItem, index) in oneItem.children"
               @click="selectMore(oneItem,oneItem.children,twoItem)">{{
-              twoItem[oneItem.label] 
+              twoItem[oneItem.text] 
               }}</text>
           </view>
         </view>
@@ -44,14 +44,14 @@
 					<view class="inline_items" v-show="item.type === `inline`" >
 						<text :class="['txt', oneItem.isCheck ? 'active' : '']" v-for="(oneItem, index) in checkList" :key="index"
 							@click="selectItem(oneItem, index)">{{
-							oneItem[label] 
+							oneItem[item.text] 
 							}}</text>
 					</view>
 
 					<view class="block_items" v-show="item.type === `block`" >
 						<div :class="['txt', oneItem.isCheck ? 'active' : '']" v-for="(oneItem, index) in checkList" :key="index"
 							@click="selectItem(oneItem, index)">{{
-							oneItem[label] 
+							oneItem[item.text] 
 							}}</div>
 					</view>
 
@@ -74,16 +74,16 @@ export default {
 		// 	default: ""
 		// },
 		// 展示的字段
-		label: {
-			type: String,
-			default: "label"
-		},
-		// 所要取的取
-		value: {
-			type: String,
+		// label: {
+		// 	type: String,
+		// 	default: "label"
+		// },
+		// // 所要取的取
+		// value: {
+		// 	type: String,
 			
-			default: "value"
-    },
+		// 	default: "value"
+    // },
     //item
     item: {
 			type: Object,
@@ -157,7 +157,8 @@ export default {
 				})
 				twoItem.isCheck = !isCheck;
 			}
-			this.$emit('select', {field:oneItem.field,value:this.getValueMore(oneItem,oneList)});
+			this.$emit('select', { field: oneItem.field, value: this.getValueMore(oneItem, oneList) });
+			this.$emit("check", {index:this.index,list:this.checkList})//同步父组件的index的item
 		},
 		getValueMore(oneItem,oneList) { 
 			let values = [];
@@ -195,7 +196,8 @@ export default {
 				})
 				oneItem.isCheck = !isCheck;
 			}
-			this.$emit('select', {field:this.item.field,value:this.getValue()});
+			this.$emit('select', { field: this.item.field, value: this.getValue() });//修改父组件的valueobj
+			this.$emit("check", {index:this.index,list:this.checkList})//同步父组件的index的item
 		
     },
     //单层数据清空数据
@@ -213,24 +215,24 @@ export default {
 				return item.isCheck;
 			})
 			list.forEach(item => {
-				values.push(item[this.value]);
+				values.push(item[this.item.value]);
 			});
 			return this.item.multiple ? values : values[0] || "";
 		},
-		getLabel() {
-			let labels = [];
-			let list = this.checkList.filter((item) => {
-				return item.isCheck;
-			})
-			list.forEach(item => {
-				labels.push(item[this.label]);
-			});
-			return this.item.multiple ? labels : labels[0] || "";
-		},
+		// getLabel() {
+		// 	let labels = [];
+		// 	let list = this.checkList.filter((item) => {
+		// 		return item.isCheck;
+		// 	})
+		// 	list.forEach(item => {
+		// 		labels.push(item[this.label]);
+		// 	});
+		// 	return this.item.multiple ? labels : labels[0] || "";
+		// },
 		
-		getAllList() {
-			return this.$fn.deepClone(this.checkList);
-		},
+		// getAllList() {
+		// 	return this.$fn.deepClone(this.checkList);
+		// },
 	
 	}
 }
