@@ -60,6 +60,21 @@
 					}
 				}
 			]
+		},
+		{
+			"root":"pages/subPacks/static", //子包的static目录
+			"pages":[
+			]
+		},
+		{
+			"root":"pages/subPacks/utils", //utils
+			"pages":[
+			]
+		},
+		{
+			"root":"pages/subPacks/components", //utils
+			"pages":[
+			]
 		}
 	],
 	"globalStyle": {

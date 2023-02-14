@@ -28,10 +28,10 @@ Vue.use(uView)
 /**************************************************************************
 全局组件
 */
-import myDropdown from '@/components/dropdown/index'
+import myDropdown from '@/pages/subPacks/components/dropdown/index'
 Vue.component('myDropdown', myDropdown)
 
-import panel from '@/components/panel'
+import panel from '@/pages/subPacks/components/panel'
 Vue.component('panel', panel)
 
 
@@ -40,8 +40,16 @@ Vue.component('panel', panel)
 */
 import XEUtils from 'xe-utils'
 Vue.prototype.$utils = XEUtils
-import * as fn from "@/utils/fn.js"
+
+
+// import * as fn from "@/utils/fn.js"
+// Vue.prototype.$fn = fn;
+
+// import * as validator from "@/utils/validate"
+// Vue.prototype.$validator = validator;
+
+import * as fn from "@/pages/subPacks/utils/fn.js"
 Vue.prototype.$fn = fn;
 
-import * as validator from "@/utils/validate"
+import * as validator from "@/pages/subPacks/utils/validate"
 Vue.prototype.$validator = validator;
