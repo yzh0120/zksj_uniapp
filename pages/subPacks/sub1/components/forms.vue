@@ -1,5 +1,11 @@
+<!--
+ * @Author: yz
+ * @Date: 2023-02-06 17:15:20
+ * @Description: 
+ * 
+-->
 <template>
-  <view>
+  <div>
     <!-- 注意，如果需要兼容微信小程序，最好通过setRules方法设置rules规则 -->
     <u--form labelPosition="left" :model="form" :rules="rules" ref="uForm">
       <u-form-item label="姓名" prop="userInfo.name" borderBottom >
@@ -10,13 +16,13 @@
         <uni-data-select v-model="form.like" :localdata="range"></uni-data-select>
       </u-form-item>
 
-      <dateCom :form="form" field="accountDate" label="收费时间" @update="updateFormFieldValue" format="yyyy-MM-dd HH:mm:ss" :required="true">
-      </dateCom>
+      <formDate :form="form" field="accountDate" label="收费时间" @update="updateFormFieldValue" format="yyyy-MM-dd HH:mm:ss" :required="true">
+      </formDate>
 
     </u--form>
 
     <u-button @click="submit">提交</u-button>
-  </view>
+  </div>
 </template>
 
 <script>

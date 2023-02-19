@@ -35,7 +35,8 @@ export default {
         { name: "标题栏", url: "uni-ui-section" },
         { name: "dropdown", url: "dropdown" },
         { name: "panel", url: "panel" },
-        { name: "forms", url: "forms" }
+        { name: "forms", url: "forms" },
+        { name: "全局模态框", url: "globalModal" }
       ]
     }
   },

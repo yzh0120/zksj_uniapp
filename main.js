@@ -4,7 +4,9 @@ import App from './App'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
+import store from './store/index.js'
 const app = new Vue({
+    store,
     ...App
 })
 
@@ -36,8 +38,11 @@ Vue.component('myDropdown', myDropdown)
 import panel from '@/pages/subPacks/components/panel'
 Vue.component('panel', panel)
 
-import dateCom from "@/pages/subPacks/components/datecom.vue"
-Vue.component('dateCom', dateCom)
+import formDate from "@/pages/subPacks/components/datecom.vue"
+Vue.component('formDate', formDate)
+
+import globalModal from "@/pages/subPacks/components/globalModal.vue"
+Vue.component('globalModal', globalModal)
 /**************************************************************************
 原型链
 */

@@ -1,5 +1,5 @@
 <template>
-  <view class="uni-wrap">
+  <div class="uni-wrap">
     <view class="example-info">
       <text class="example-info-text"> uni-section 组件主要用于文章、列表详情等标题展示 </text>
     </view>
@@ -16,7 +16,7 @@
         right slot
       </template>
     </uni-section>
-  </view>
+  </div>
 </template>
 
 <script>

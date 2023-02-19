@@ -19,6 +19,7 @@
   "homepage": "https://github.com/yzh0120/zksj_uniapp#readme",
   "dependencies": {
     "dayjs": "^1.11.4",
+    "vue-inset-loader": "^1.2.6",
     "xe-utils": "^3.5.6"
   }
 }
