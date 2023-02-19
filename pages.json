@@ -5,6 +5,18 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/all/home",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/all/person",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
 		}
 	],
   //分包加载配置，此配置为小程序的分包加载机制。
@@ -83,25 +95,25 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
-	// "tabBar": {
-	// 	"color": "#7A7E83",
-	// 	"selectedColor": "#4985F6",
-	// 	"borderStyle": "black",
-	// 	"backgroundColor": "#ffffff",
-	// 	"list": [
-	// 		{
-	// 			"pagePath": "pages/subPacks/sub1/list",
-	// 			"iconPath": "static/logo.png",
-	// 			"selectedIconPath": "static/logo.png",
-	// 			"text": "列表1"
-	// 		},
-	// 		{
-	// 			"pagePath": "pages/subPacks/sub2/list",
-	// 			"iconPath": "static/logo.png",
-	// 			"selectedIconPath": "static/logo.png",
-	// 			"text": "列表2"
-	// 		}
-	// 	]
-	// }
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#4985F6",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/all/home",
+				"iconPath": "static/logo.png",
+				"selectedIconPath": "static/logo.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/all/person",
+				"iconPath": "static/logo.png",
+				"selectedIconPath": "static/logo.png",
+				"text": "我的"
+			}
+		]
+	}
 }
