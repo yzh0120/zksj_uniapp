@@ -7,6 +7,8 @@ App.mpType = 'app'
 const app = new Vue({
     ...App
 })
+
+require('./pages/subPacks/utils/http.js')(app)
 app.$mount()
 // #endif
 

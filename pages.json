@@ -84,7 +84,12 @@
 			]
 		},
 		{
-			"root":"pages/subPacks/components", //utils
+			"root":"pages/subPacks/components", //components
+			"pages":[
+			]
+		},
+		{
+			"root":"pages/subPacks/api", //api
 			"pages":[
 			]
 		}

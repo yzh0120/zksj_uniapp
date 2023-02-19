@@ -20,7 +20,7 @@
 </template>
 
 <script>
-
+import * as userApi from "@/pages/subPacks/api/user"
 export default {
   data() {
     return {
@@ -28,6 +28,11 @@ export default {
         { name: "子包1", url: "list" },
       ]
     }
+  },
+  mounted() {
+    userApi.login({userName:"caoheli", password:"12345611"}).then((res) => {
+      console.log(res,"0090909")
+    })
   },
   methods: {
     go(url) { 
