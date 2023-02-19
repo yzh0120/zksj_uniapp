@@ -3,12 +3,16 @@
     <!-- 注意，如果需要兼容微信小程序，最好通过setRules方法设置rules规则 -->
     <u--form labelPosition="left" :model="form" :rules="rules" ref="uForm">
       <u-form-item label="姓名" prop="userInfo.name" borderBottom >
-        <u--input v-model="form.userInfo.name" border="none"></u--input>
+        <u--input v-model="form.name" border="none"></u--input>
       </u-form-item>
 
       <u-form-item label="爱好" prop="userInfo.like" borderBottom >
-        <uni-data-select v-model="form.userInfo.like" :localdata="range"></uni-data-select>
+        <uni-data-select v-model="form.like" :localdata="range"></uni-data-select>
       </u-form-item>
+
+      <dateCom :form="form" field="accountDate" label="收费时间" @update="updateFormFieldValue" format="yyyy-MM-dd HH:mm:ss" :required="true">
+      </dateCom>
+
     </u--form>
 
     <u-button @click="submit">提交</u-button>
@@ -21,10 +25,10 @@ export default {
     let self = this
     return {
       form: {
-        userInfo: {
           name: 123,
-          like:2,
-        },
+          like: 2,
+          accountDate:""
+
       },
       range: [
       { value: 0, text: "篮球" },
@@ -32,7 +36,7 @@ export default {
         { value: 2, text: "游泳" },
       ],
       rules: {
-        'userInfo.name': [
+        name: [
           {
             type: 'any',
             required: true,
@@ -44,14 +48,22 @@ export default {
             trigger: ['blur']
           }
         ],
-        'userInfo.like': [
+        like: [
           {
             type: 'any',
             required: true,
             message: '请填写姓名',
             trigger: ['blur', 'change']
           }
-        ]
+        ],
+        accountDate: [
+          {
+            type: 'any',
+            required: true,
+            message: '请填写姓名',
+            trigger: ['blur', 'change']
+          }
+        ],
       }
     };
   },
@@ -61,9 +73,11 @@ export default {
     this.$refs.uForm.setRules(this.rules)
   },
   methods: {
+    updateFormFieldValue(e) {
+      this.form[e.field] = e.value
+            console.log(e,this.form)
+        },
     submit() {
-
-      console.log(uni.$u,"uni.$u")
 
 			this.$refs.uForm.validate().then(res => {
         uni.$u.toast('校验通过')

@@ -36,7 +36,8 @@ Vue.component('myDropdown', myDropdown)
 import panel from '@/pages/subPacks/components/panel'
 Vue.component('panel', panel)
 
-
+import dateCom from "@/pages/subPacks/components/datecom.vue"
+Vue.component('dateCom', dateCom)
 /**************************************************************************
 原型链
 */
