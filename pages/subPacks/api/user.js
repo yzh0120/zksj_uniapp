@@ -8,7 +8,7 @@ const http = uni.$u.http
 
 // export const login = (params) => http.post('/v1/sys/organization/user/login',params)
 
-export function login1(params = {}) { 
+export function login(params = {}) { 
   return  http.post('/v1/sys/organization/user/login', params)
 }
 

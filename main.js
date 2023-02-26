@@ -12,6 +12,9 @@ const app = new Vue({
 
 require('./pages/subPacks/utils/http.js')(app)
 app.$mount()
+
+
+import './pages/router'; //引入拦截
 // #endif
 
 // #ifdef VUE3
