@@ -21,7 +21,7 @@ uni.addInterceptor('navigateTo', {
 	invoke(e) {
 		if (!hasPermission(e.url)) {
 			uni.redirectTo({
-				url: "/pages/all/login"
+				url: "/pages/subPacks/login/login"
 			})
 			return false
 		}
@@ -37,7 +37,7 @@ uni.addInterceptor('switchTab', {
 	invoke(e) {
 		if (!hasPermission(e.url)) {
 			uni.redirectTo({
-				url: "/pages/all/login"
+				url: "/pages/subPacks/login/login"
 			})
 			return false
 		}

@@ -1,16 +1,12 @@
 <template>
   <div>
-    
-    <homecom></homecom>
+person
   </div>
 </template>
 
 <script>
-import homecom from '@/pages/subPacks/components/home'
   export default {
-  components: {
-    homecom
-  }
+    
   }
 </script>
 

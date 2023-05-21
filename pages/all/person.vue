@@ -6,13 +6,16 @@
 -->
 <template>
   <div>
-
+    <person></person>
   </div>
 </template>
 
 <script>
+import person from '@/pages/subPacks/components/person'
   export default {
-    
+  components: {
+    person
+  }
   }
 </script>
 

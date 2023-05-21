@@ -95,8 +95,14 @@
 			]
 		},
 		{
-			"root":"pages/subPacks/static", //子包的static目录
+			"root":"pages/subPacks/login", //子包的login目录
 			"pages":[
+				{
+					"path": "login",
+					"style": {
+						"navigationBarTitleText": "登录页"
+					}
+				}
 			]
 		},
 		{

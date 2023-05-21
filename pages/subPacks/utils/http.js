@@ -48,7 +48,7 @@ module.exports = (vm) => {
 
 			// if (data.code == 401) {
 			// 	fungoPreviousPage()
-			// 	uni.$u.route('/pages/login/wxlogin')
+			// 	uni.$u.route('/pages/subPacks/login/login')
 			// }
 
 		}
